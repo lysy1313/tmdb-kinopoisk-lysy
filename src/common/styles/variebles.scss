@@ -1,0 +1,16 @@
+:root {
+  --text-color: #ffffff;
+  --primary-color: #0d253f;
+  --secondary-color: #01b4e4;
+}
+
+.white {
+  --text-color: #0d253f;
+  --primary-color: #e2e8f0;
+  --secondary-color: #017799;
+}
+
+$textColor: var(--text-color);
+
+$primaryColor: var(--primary-color);
+$secondaryColor: var(--secondary-color);

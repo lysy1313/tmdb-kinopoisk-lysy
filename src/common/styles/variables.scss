@@ -1,16 +1,19 @@
 :root {
   --text-color: #ffffff;
+  --text-main-color: #ffffff;
   --primary-color: #0d253f;
   --secondary-color: #01b4e4;
 }
 
 .white {
   --text-color: #0d253f;
+  --text-main-color: #01b4e4;
   --primary-color: #cfd5dd;
   --secondary-color: #017799;
 }
 
 $textColor: var(--text-color);
+$textMainColor: var(--text-main-color);
 
 $primaryColor: var(--primary-color);
 $secondaryColor: var(--secondary-color);

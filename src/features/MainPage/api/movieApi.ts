@@ -3,10 +3,10 @@ import type { MovieResponse } from "./movie.types";
 
 export const movie = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getPopularMovies: build.query<MovieResponse, string>({
-      query: (category) => `movie/${category}`,
+    getMovies: build.query<MovieResponse, { category: string; page?: number }>({
+      query: ({ category, page = 1 }) => `movie/${category}?page=${page}`,
     }),
   }),
 });
 
-export const { useGetPopularMoviesQuery } = movie;
+export const { useGetMoviesQuery, useLazyGetMoviesQuery } = movie;

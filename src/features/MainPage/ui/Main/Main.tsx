@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/purity */
 import { Container } from "@/common/components/Container/Container";
 import { useMemo } from "react";
-import { useGetPopularMoviesQuery } from "../../api/movieApi";
+import { useGetMoviesQuery } from "../../api/movieApi";
 import styles from "./Main.module.scss";
 import { Search } from "@/common/components/Search/Search";
 
 export const Main = () => {
-  const { data } = useGetPopularMoviesQuery("popular");
+  const { data } = useGetMoviesQuery({ category: "popular" });
 
   const randomIndex = useMemo(() => Math.floor(Math.random() * 20), []);
 
@@ -16,7 +16,7 @@ export const Main = () => {
     : "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop";
 
   return (
-    <main
+    <section
       className={styles.main}
       style={{ backgroundImage: `url(${backdropUrl})` }}
     >
@@ -27,6 +27,6 @@ export const Main = () => {
           <Search />
         </div>
       </Container>
-    </main>
+    </section>
   );
 };

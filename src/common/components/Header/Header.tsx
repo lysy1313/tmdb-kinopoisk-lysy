@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Container } from "../Container/Container";
 import styles from "./Header.module.scss";
 import { useEffect, useState } from "react";
+import { Path } from "@/common/routing/Routing";
 
 export const Header = () => {
   const [isWhite, setIsWhite] = useState(false);
@@ -48,11 +49,11 @@ export const Header = () => {
             </Link>
           </div>
           <nav className={styles.navigation}>
-            <Link to={"/"}>Main</Link>
+            <Link to={Path.Main}>Main</Link>
             <Link to={"/movies/popular"}>Category Movies</Link>
-            <Link to={""}>Filtered Movies</Link>
-            <Link to={""}>Search</Link>
-            <Link to={""}>Favorites</Link>
+            <Link to={Path.FilteredMovies}>Filtered Movies</Link>
+            <Link to={Path.Search}>Search</Link>
+            <Link to={Path.Favorites}>Favorites</Link>
           </nav>
           <div className={styles.themeMode}>
             <button onClick={() => setIsWhite(!isWhite)} />

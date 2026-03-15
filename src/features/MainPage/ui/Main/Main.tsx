@@ -24,7 +24,7 @@ export const Main = () => {
         <div className={styles.heroTitle}>
           <h1>Welcome to TMDB</h1>
           <p>Browse highlighted titles from TMDB</p>
-          <Search />
+          <Search page="main" />
         </div>
       </Container>
     </section>

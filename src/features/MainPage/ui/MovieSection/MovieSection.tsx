@@ -1,8 +1,9 @@
-import { Container } from "@/common/components/Container/Container";
-import { useGetMoviesQuery } from "../../api/movieApi";
-import styles from "./MovieSection.module.scss";
-import { Link } from "react-router";
-import { MovieCart } from "./MovieCart/MovieCart";
+import { Container } from '@/common/components/Container/Container';
+import { useGetMoviesQuery } from '../../api/movieApi';
+import styles from './MovieSection.module.scss';
+import { Link } from 'react-router';
+import { MovieCart } from './MovieCart/MovieCart';
+import { Title } from '@/common/components/Title/Title';
 
 type MovieSectionProps = {
   title: string;
@@ -15,7 +16,7 @@ export const MovieSection = ({ category, title }: MovieSectionProps) => {
       <Container>
         <div>
           <div className={styles.titleSection}>
-            <h2 className={styles.title}>{title}</h2>
+            <Title>{title}</Title>
             <Link to={`/movies/${category}`} className={styles.link}>
               View more &rarr;
             </Link>

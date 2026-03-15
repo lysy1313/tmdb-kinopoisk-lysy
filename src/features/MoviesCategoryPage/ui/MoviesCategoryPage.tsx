@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import { MovieLists } from '@/common/constants/moveLists';
+import { MovieLists } from '@/common/constants/constants';
 import { useNavigate, useParams } from 'react-router';
 import styles from './MoviesCategoryPage.module.scss';
 import { Container } from '@/common/components/Container/Container';

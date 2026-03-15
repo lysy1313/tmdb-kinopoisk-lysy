@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import { MovieLists } from "@/common/constants/moveLists";
-import { useNavigate, useParams } from "react-router";
-import styles from "./MoviesCategoryPage.module.scss";
-import { Container } from "@/common/components/Container/Container";
-import { useLazyGetMoviesQuery } from "../MainPage/api/movieApi";
-import { MovieCart } from "../MainPage/ui/MovieSection/MovieCart/MovieCart";
-import { useEffect, useState } from "react";
-import { Pagination } from "@/common/components/Pagination/Pagination";
+import { MovieLists } from '@/common/constants/moveLists';
+import { useNavigate, useParams } from 'react-router';
+import styles from './MoviesCategoryPage.module.scss';
+import { Container } from '@/common/components/Container/Container';
+import { useLazyGetMoviesQuery } from '../../MainPage/api/movieApi';
+import { MovieCart } from '../../MainPage/ui/MovieSection/MovieCart/MovieCart';
+import { useEffect, useState } from 'react';
+import { Pagination } from '@/common/components/Pagination/Pagination';
+import { GridWrapper } from '@/common/components/MoviesWrapper/GridWrapper/GridWrapper';
+import { Title } from '@/common/components/Title/Title';
 
-type CategoryType = "popular" | "top_rated" | "upcoming" | "now_playing";
+type CategoryType = 'popular' | 'top_rated' | 'upcoming' | 'now_playing';
 
 export const MoviesCategoryPage = () => {
   const params = useParams<{ category: CategoryType }>();
@@ -39,9 +41,7 @@ export const MoviesCategoryPage = () => {
           {MovieLists.map((list) => (
             <button
               key={list.category}
-              className={
-                list.category === category?.category ? styles.active : ""
-              }
+              className={list.category === category?.category ? styles.active : ''}
               onClick={() => paramsChangeHandler(list.category)}
             >
               {list.label}
@@ -52,22 +52,15 @@ export const MoviesCategoryPage = () => {
           <h3>Unknown catgory</h3>
         ) : (
           <>
-            {" "}
-            <h2>{category?.label}</h2>
-            <div className={styles.moviesWrapper}>
+            <Title>{category?.label}</Title>
+            <GridWrapper>
               {data?.results.map((movie) => (
                 <MovieCart key={movie.id} movie={movie} size="large" />
               ))}
-            </div>
+            </GridWrapper>
           </>
         )}
-        {data?.total_pages && (
-          <Pagination
-            currentPage={page}
-            setCurrentPage={setPage}
-            pagesCount={data?.total_pages}
-          />
-        )}
+        {data?.total_pages && <Pagination currentPage={page} setCurrentPage={setPage} pagesCount={data?.total_pages} />}
       </Container>
     </section>
   );

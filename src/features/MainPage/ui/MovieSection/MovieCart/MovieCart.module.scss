@@ -86,6 +86,9 @@
 
     .btnFavorites {
       transform: translate(-70px, 70px);
+      &.isFav {
+        transform: translate(0, 0);
+      }
     }
 
     & img {

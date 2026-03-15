@@ -1,5 +1,5 @@
 import { Container } from "@/common/components/Container/Container";
-import { useGetPopularMoviesQuery } from "../../api/movieApi";
+import { useGetMoviesQuery } from "../../api/movieApi";
 import styles from "./MovieSection.module.scss";
 import { Link } from "react-router";
 import { MovieCart } from "./MovieCart/MovieCart";
@@ -9,7 +9,7 @@ type MovieSectionProps = {
   category: string;
 };
 export const MovieSection = ({ category, title }: MovieSectionProps) => {
-  const { data } = useGetPopularMoviesQuery(category);
+  const { data } = useGetMoviesQuery({ category });
   return (
     <section>
       <Container>

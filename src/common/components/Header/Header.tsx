@@ -15,7 +15,7 @@ export const Header = () => {
   }, [isWhite]);
 
   return (
-    <header>
+    <header className={styles.headerBorder}>
       <Container>
         <div className={styles.header}>
           <div className={styles.logo}>
@@ -48,8 +48,8 @@ export const Header = () => {
             </Link>
           </div>
           <nav className={styles.navigation}>
-            <Link to={""}>Main</Link>
-            <Link to={""}>Category Movies</Link>
+            <Link to={"/"}>Main</Link>
+            <Link to={"/movies/popular"}>Category Movies</Link>
             <Link to={""}>Filtered Movies</Link>
             <Link to={""}>Search</Link>
             <Link to={""}>Favorites</Link>

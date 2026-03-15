@@ -1,5 +1,9 @@
 @use "@/common/styles/variables.scss" as *;
 
+.headerBorder {
+  border-bottom: 1px solid $textColor;
+}
+
 .header {
   width: 100%;
   padding: 20px;

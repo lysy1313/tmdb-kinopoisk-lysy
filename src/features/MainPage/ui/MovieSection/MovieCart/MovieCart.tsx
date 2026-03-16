@@ -6,9 +6,9 @@ import { useAppDispatch } from '@/common/hooks/useAppDispatch';
 
 type Props = {
   movie: Movie | Favorites;
-  size?: 'mini' | 'large';
+  size?: 'mini' | 'medium' | 'large';
 };
-export const MovieCart = ({ movie, size = 'mini' }: Props) => {
+export const MovieCart = ({ movie, size = 'medium' }: Props) => {
   const isFavorites = useAppSelector((state) => selectIsFavorite(state, movie.id));
 
   const dispatch = useAppDispatch();
@@ -26,14 +26,16 @@ export const MovieCart = ({ movie, size = 'mini' }: Props) => {
   const rating =
     movie.vote_average <= 5 ? styles.red : movie.vote_average > 5 && movie.vote_average < 8 ? styles.orange : '';
 
+  const sizeCart = size === 'large' ? styles.largeCart : size === 'mini' ? styles.miniCart : '';
+
   return (
     <div>
-      <div key={movie.id} className={`${styles.cart} ${size === 'large' ? styles.largeCart : ''}`}>
+      <div key={movie.id} className={`${styles.cart} ${sizeCart}`}>
         <img
           src={
             movie.poster_path
               ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-              : 'https://placehold.co/800/EEE/01b4e4?font=montserrat&text=No+image'
+              : 'https://placehold.co/500/555/01b4e4?font=montserrat&text=No+poster'
           }
           alt="Movie"
           loading="lazy"

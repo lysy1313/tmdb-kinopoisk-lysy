@@ -1,0 +1,22 @@
+@use '@/common/styles/variables.scss' as *;
+
+.sectionWrapper {
+  margin: 40px auto 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.containerFiltered {
+  max-width: 270px;
+  width: 100%;
+  max-height: 660px;
+  padding: 10px;
+  border: 1px solid $secondaryColor;
+  border-radius: 10px;
+  background-color: $blackPrimaryColor;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

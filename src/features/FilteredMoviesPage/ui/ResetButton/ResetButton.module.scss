@@ -1,0 +1,13 @@
+@use '@/common/styles/variables.scss' as *;
+
+.btnReset {
+  height: 30px;
+  background-color: $secondaryColor;
+  border: 1px solid $primaryColor;
+  cursor: pointer;
+  color: $textColor;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

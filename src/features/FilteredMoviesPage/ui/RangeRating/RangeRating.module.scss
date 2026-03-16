@@ -1,0 +1,77 @@
+@use '@/common/styles/variables.scss' as *;
+
+.rangeContainer {
+  width: 100%;
+  user-select: none;
+
+  h3 {
+    margin-bottom: 15px;
+    color: $textColor;
+    font-weight: 300;
+  }
+}
+
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.sliderTrack {
+  position: absolute;
+  height: 6px;
+  border-radius: 3px;
+  background-color: $textColor;
+  width: 100%;
+  z-index: 1;
+}
+
+.activeRange {
+  position: absolute;
+  height: 6px;
+  border-radius: 3px;
+  background-color: $secondaryColor;
+  z-index: 2;
+}
+
+.thumb {
+  position: absolute;
+  width: 100%;
+  appearance: none;
+  pointer-events: none;
+  background: none;
+  outline: none;
+  margin: 0;
+  z-index: 3;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid $secondaryColor;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s ease-in-out;
+
+    &:active {
+      transform: scale(1.2);
+      background-color: $secondaryColor;
+    }
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid $secondaryColor;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

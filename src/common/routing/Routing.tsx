@@ -6,6 +6,7 @@ import { MovieDetailsPage } from '@/features/MovieDetailsPage/ui/MovieDetailsPag
 import { MoviesCategoryPage } from '@/features/MoviesCategoryPage/ui/MoviesCategoryPage';
 import { SearchPage } from '@/features/SearchPage/ui/SearchPage';
 import { Route, Routes } from 'react-router';
+import { NotFound } from '../components/NotFound/NotFound';
 
 export const Path = {
   Main: '/',
@@ -14,6 +15,7 @@ export const Path = {
   FilteredMovies: 'filtered_movies',
   Search: 'search',
   Favorites: 'favorites',
+  Other: '*',
 } as const;
 
 export const Routing = () => (
@@ -24,5 +26,6 @@ export const Routing = () => (
     <Route path={Path.Search} element={<SearchPage />} />
     <Route path={Path.Favorites} element={<FavoritesPage />} />
     <Route path={Path.MovieDetails} element={<MovieDetailsPage />} />
+    <Route path={Path.Other} element={<NotFound />} />
   </Routes>
 );

@@ -1,4 +1,5 @@
 @use '@/common/styles/variables.scss' as *;
+@use '@/common/styles/placeholders.scss' as *;
 
 .genreContainer {
   width: 100%;
@@ -8,13 +9,7 @@
   flex-wrap: wrap;
 
   button {
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-
-    background-color: $primaryColor;
-    color: $textColor;
-    border: 1px solid $secondaryColor;
+    @extend %button;
 
     transition:
       background-color 0.4s ease,
@@ -26,10 +21,6 @@
       &:hover {
         opacity: 0.8;
       }
-    }
-
-    &:hover {
-      background-color: $secondaryColor;
     }
   }
 }

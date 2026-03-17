@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router';
 import { useLazyGetSearchMoviesQuery } from '../api/searchMoviesApi';
 import { useEffect, useState } from 'react';
 import { GridWrapper } from '@/common/components/MoviesWrapper/GridWrapper/GridWrapper';
-import { MovieCart } from '@/features/MainPage/ui/MovieSection/MovieCart/MovieCart';
+import { MovieCart } from '@/common/components/MovieCart/MovieCart';
 import styles from './SearchPage.module.scss';
 import { Title } from '@/common/components/Title/Title';
 import { Pagination } from '@/common/components/Pagination/Pagination';

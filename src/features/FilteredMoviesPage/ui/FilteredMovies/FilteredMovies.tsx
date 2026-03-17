@@ -1,5 +1,5 @@
 import { GridWrapper } from '@/common/components/MoviesWrapper/GridWrapper/GridWrapper';
-import { MovieCart } from '@/features/MainPage/ui/MovieSection/MovieCart/MovieCart';
+import { MovieCart } from '@/common/components/MovieCart/MovieCart';
 import { useAppSelector } from '@/common/hooks/useAppSelector';
 import { selectFiltered, selectPage, setPage } from '../../model/filteredMoviesSlice';
 import { useGetFilteredMoviesQuery } from '../../api/filteredMoviesApi';

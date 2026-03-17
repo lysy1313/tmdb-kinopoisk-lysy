@@ -2,6 +2,7 @@
 import { FavoritesPage } from '@/features/FavoritesPage/ui/FavoritesPage';
 import { FilteredMoviesPage } from '@/features/FilteredMoviesPage/ui/FilteredMoviesPage';
 import { MainPage } from '@/features/MainPage/ui/MainPage';
+import { MovieDetailsPage } from '@/features/MovieDetailsPage/ui/MovieDetailsPage';
 import { MoviesCategoryPage } from '@/features/MoviesCategoryPage/ui/MoviesCategoryPage';
 import { SearchPage } from '@/features/SearchPage/ui/SearchPage';
 import { Route, Routes } from 'react-router';
@@ -9,6 +10,7 @@ import { Route, Routes } from 'react-router';
 export const Path = {
   Main: '/',
   CategoryMovies: '/movies/:category',
+  MovieDetails: '/movie/:movie_id',
   FilteredMovies: 'filtered_movies',
   Search: 'search',
   Favorites: 'favorites',
@@ -21,5 +23,6 @@ export const Routing = () => (
     <Route path={Path.FilteredMovies} element={<FilteredMoviesPage />} />
     <Route path={Path.Search} element={<SearchPage />} />
     <Route path={Path.Favorites} element={<FavoritesPage />} />
+    <Route path={Path.MovieDetails} element={<MovieDetailsPage />} />
   </Routes>
 );

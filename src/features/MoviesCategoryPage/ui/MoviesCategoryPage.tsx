@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 import styles from './MoviesCategoryPage.module.scss';
 import { Container } from '@/common/components/Container/Container';
 import { useLazyGetMoviesQuery } from '../../MainPage/api/movieApi';
-import { MovieCart } from '../../MainPage/ui/MovieSection/MovieCart/MovieCart';
+import { MovieCart } from '../../../common/components/MovieCart/MovieCart';
 import { useEffect, useState } from 'react';
 import { Pagination } from '@/common/components/Pagination/Pagination';
 import { GridWrapper } from '@/common/components/MoviesWrapper/GridWrapper/GridWrapper';

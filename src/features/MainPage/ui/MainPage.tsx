@@ -1,7 +1,7 @@
 import { MovieLists } from '@/common/constants/constants';
 import { Main } from './Main/Main';
-import { MovieSection } from './MovieSection/MovieSection';
 import styles from './MainPage.module.scss';
+import { MovieShowcase } from './MovieShowcase/MovieShowcase';
 
 export const MainPage = () => {
   return (
@@ -9,7 +9,7 @@ export const MainPage = () => {
       <Main />
       <div className={styles.contentWrapper}>
         {MovieLists.map((list) => (
-          <MovieSection key={list.category} category={list.category} title={list.label} />
+          <MovieShowcase key={list.category} title={list.label} category={list.category} />
         ))}
       </div>
     </>

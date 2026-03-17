@@ -45,13 +45,13 @@
       left: 50%;
       width: 0;
       height: 2px;
-      background-color: var(--secondary-color);
+      background-color: $secondaryColor;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       transform: translateX(-50%);
     }
 
     &:hover {
-      color: var(--secondary-color);
+      color: $secondaryColor;
 
       &::after {
         width: 100%;
@@ -59,7 +59,7 @@
     }
 
     &:global(.active) {
-      color: var(--secondary-color);
+      color: $secondaryColor;
 
       &::after {
         width: 100%;
@@ -125,7 +125,7 @@
   }
 }
 
-:global(html.white) {
+:global([data-theme='light']) {
   .themeMode button {
     background-color: #ffdb1d;
 
@@ -139,7 +139,7 @@
   }
 }
 
-:global(html:not(.white)) {
+:global([data-theme='dark']) {
   .themeMode button {
     background-color: #f1f1f1;
     box-shadow: 0 0 10px rgba(241, 241, 241, 0.3);

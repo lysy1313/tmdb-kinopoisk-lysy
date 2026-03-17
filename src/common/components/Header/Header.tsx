@@ -1,26 +1,21 @@
-import { Link } from "react-router";
-import { Container } from "../Container/Container";
-import styles from "./Header.module.scss";
-import { useEffect, useState } from "react";
-import { Path } from "@/common/routing/Routing";
+import { toggleTheme } from '@/app/model/appSlice';
+import { useAppDispatch } from '@/common/hooks/useAppDispatch';
+import { Path } from '@/common/routing/Routing';
+import { Link } from 'react-router';
+import { Container } from '../Container/Container';
+import styles from './Header.module.scss';
 
 export const Header = () => {
-  const [isWhite, setIsWhite] = useState(false);
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (isWhite) {
-      document.documentElement.classList.add("white");
-    } else {
-      document.documentElement.classList.remove("white");
-    }
-  }, [isWhite]);
+  const changeThemeHandler = () => dispatch(toggleTheme());
 
   return (
     <header className={styles.headerBorder}>
       <Container>
         <div className={styles.header}>
           <div className={styles.logo}>
-            <Link to={"/"}>
+            <Link to={'/'}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 273.42 35.52"
@@ -28,14 +23,7 @@ export const Header = () => {
                 aria-label="The Movie Database"
               >
                 <defs>
-                  <linearGradient
-                    id="«r0»"
-                    x1="0"
-                    y1="17.76"
-                    x2="273.42"
-                    y2="17.76"
-                    gradientUnits="userSpaceOnUse"
-                  >
+                  <linearGradient id="«r0»" x1="0" y1="17.76" x2="273.42" y2="17.76" gradientUnits="userSpaceOnUse">
                     <stop offset="0" stopColor="#90cea1"></stop>
                     <stop offset="0.56" stopColor="#3cbec9"></stop>
                     <stop offset="1" stopColor="#00b3e5"></stop>
@@ -50,13 +38,13 @@ export const Header = () => {
           </div>
           <nav className={styles.navigation}>
             <Link to={Path.Main}>Main</Link>
-            <Link to={"/movies/popular"}>Category Movies</Link>
+            <Link to={'/movies/popular'}>Category Movies</Link>
             <Link to={Path.FilteredMovies}>Filtered Movies</Link>
             <Link to={Path.Search}>Search</Link>
             <Link to={Path.Favorites}>Favorites</Link>
           </nav>
           <div className={styles.themeMode}>
-            <button onClick={() => setIsWhite(!isWhite)} />
+            <button onClick={changeThemeHandler} />
           </div>
         </div>
       </Container>

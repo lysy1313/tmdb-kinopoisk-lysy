@@ -2,7 +2,7 @@ import { Container } from '@/common/components/Container/Container';
 import { Title } from '@/common/components/Title/Title';
 import { useAppSelector } from '@/common/hooks/useAppSelector';
 import { selectFavoritesMovies } from '../model/favoritesSlice';
-import { MovieCart } from '@/features/MainPage/ui/MovieSection/MovieCart/MovieCart';
+import { MovieCart } from '@/common/components/MovieCart/MovieCart';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {

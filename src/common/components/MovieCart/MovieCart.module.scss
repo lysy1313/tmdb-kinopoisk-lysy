@@ -1,3 +1,11 @@
+@use '@/common/styles/variables.scss' as *;
+@use '@/common/styles/placeholders.scss' as *;
+
+.linkCart {
+  color: $textColor;
+  display: inline-block;
+}
+
 .cart {
   width: 200px;
   height: 300px;
@@ -10,10 +18,16 @@
   &.largeCart {
     width: 240px;
     height: 350px;
+    & + .titleCart {
+      width: 240px;
+    }
   }
   &.miniCart {
     width: 185px;
     height: 270px;
+    & + .titleCart {
+      width: 185px;
+    }
   }
 
   transition: all 0.6s ease;
@@ -59,30 +73,11 @@
   }
 
   .rating {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #38383877;
-    cursor: pointer;
-    outline: 1px solid greenyellow;
-    color: greenyellow;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %rating;
 
     position: absolute;
     right: 10px;
     bottom: 10px;
-
-    &.red {
-      outline: 1px solid red;
-      color: red;
-    }
-    &.orange {
-      outline: 1px solid orange;
-      color: orange;
-    }
   }
 
   &:hover {

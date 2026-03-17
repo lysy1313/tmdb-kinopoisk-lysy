@@ -1,0 +1,79 @@
+@use '@/common/styles/variables.scss' as *;
+
+.notFound {
+  min-height: 80vh; // Центрируем контент по вертикали
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.errorCode {
+  font-size: clamp(80px, 15vw, 150px); // Адаптивный размер шрифта
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(90deg, #90cea1, #3cbec9, #00b3e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.description {
+  max-width: 500px;
+  font-size: 18px;
+  color: $secondaryTextColor;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.btnPrimary,
+.btnSecondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnPrimary {
+  background-color: $secondaryColor;
+  color: #ffffff;
+  border: none;
+
+  &:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+}
+
+.btnSecondary {
+  background: none;
+  border: 1px solid $secondaryColor;
+  color: $textColor;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: $textColor;
+  }
+}

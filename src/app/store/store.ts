@@ -3,9 +3,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { baseApi } from '../api/baseApi';
 import { storageMiddleware } from './middleware/storageMiddleware';
 import { filteredMoviesSlice } from '@/features/FilteredMoviesPage/model/filteredMoviesSlice';
+import { appSlice } from '../model/appSlice';
 
 export const store = configureStore({
   reducer: {
+    [appSlice.name]: appSlice.reducer,
     [baseApi.reducerPath]: baseApi.reducer,
     [favoritesSlice.name]: favoritesSlice.reducer,
     [filteredMoviesSlice.name]: filteredMoviesSlice.reducer,

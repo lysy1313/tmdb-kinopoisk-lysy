@@ -7,6 +7,7 @@ type MovieShowcaseProps = {
 };
 export const MovieShowcase = ({ category, title }: MovieShowcaseProps) => {
   const { data, isLoading } = useGetMoviesQuery({ category });
+
   return (
     <>
       <ContentSection

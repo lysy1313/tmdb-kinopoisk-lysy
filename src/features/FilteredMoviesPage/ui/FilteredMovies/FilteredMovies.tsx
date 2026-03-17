@@ -6,6 +6,7 @@ import { useGetFilteredMoviesQuery } from '../../api/filteredMoviesApi';
 import { Pagination } from '@/common/components/Pagination/Pagination';
 import { useAppDispatch } from '@/common/hooks/useAppDispatch';
 import styles from './FilteredMovies.module.scss';
+import { MovieCartSkeleton } from '@/common/components/MovieCartSkeleton/MovieCartSkeleton';
 
 export const FilteredMovies = () => {
   const filtered = useAppSelector(selectFiltered);
@@ -20,11 +21,25 @@ export const FilteredMovies = () => {
     paramsQuery = { ...filtered, withGenres: undefined };
   }
 
-  const { data } = useGetFilteredMoviesQuery(paramsQuery);
+  const { data, isLoading } = useGetFilteredMoviesQuery(paramsQuery);
 
   const setCurrentPage = (page: number) => {
     dispatch(setPage(page));
   };
+
+  if (isLoading) {
+    return (
+      <div className={styles.container}>
+        <GridWrapper size="mini">
+          {Array(20)
+            .fill(null)
+            .map((_, index) => (
+              <MovieCartSkeleton key={index} size="mini" />
+            ))}
+        </GridWrapper>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>

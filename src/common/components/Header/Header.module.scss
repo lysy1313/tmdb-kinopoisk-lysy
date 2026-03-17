@@ -3,6 +3,7 @@
 .headerBorder {
   border-bottom: 1px solid $secondaryColor;
   background-color: $blackPrimaryColor;
+  position: relative;
 }
 
 .header {
@@ -48,6 +49,12 @@
       background-color: $secondaryColor;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       transform: translateX(-50%);
+    }
+
+    &.active {
+      &::after {
+        width: 100%;
+      }
     }
 
     &:hover {

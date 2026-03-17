@@ -14,7 +14,7 @@ export const SimilarBlock = ({ movieId }: SimilarBlockProps) => {
         title="Recommended for you"
         items={data?.results}
         loading={isLoading}
-        renderItem={(movie) => <MovieCart movie={movie} size="mini" />}
+        renderItem={(movie) => <MovieCart movie={movie} />}
       />
     </>
   );

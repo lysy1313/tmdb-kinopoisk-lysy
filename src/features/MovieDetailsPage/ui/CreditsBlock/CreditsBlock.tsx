@@ -6,10 +6,15 @@ type CreditsBlockProps = {
   movieId: string;
 };
 export const CreditsBlock = ({ movieId }: CreditsBlockProps) => {
-  const { data } = useGetOneMovieCreditsQuery(movieId);
+  const { data, isLoading } = useGetOneMovieCreditsQuery(movieId);
   return (
     <>
-      <ContentSection title="Top Cast" items={data?.cast} renderItem={(actor) => <CreditCart credit={actor} />} />
+      <ContentSection
+        title="Top Cast"
+        items={data?.cast}
+        loading={isLoading}
+        renderItem={(actor) => <CreditCart credit={actor} />}
+      />
     </>
   );
 };

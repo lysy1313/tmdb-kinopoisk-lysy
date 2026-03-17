@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { Pagination } from '@/common/components/Pagination/Pagination';
 import { GridWrapper } from '@/common/components/MoviesWrapper/GridWrapper/GridWrapper';
 import { Title } from '@/common/components/Title/Title';
+import { MovieCartSkeleton } from '@/common/components/MovieCartSkeleton/MovieCartSkeleton';
 
 type CategoryType = 'popular' | 'top_rated' | 'upcoming' | 'now_playing';
 
@@ -16,7 +17,7 @@ export const MoviesCategoryPage = () => {
   const params = useParams<{ category: CategoryType }>();
   const navigate = useNavigate();
   const [page, setPage] = useState<number>(1);
-  const [getMoviesByCategory, { data }] = useLazyGetMoviesQuery();
+  const [getMoviesByCategory, { data, isLoading }] = useLazyGetMoviesQuery();
 
   const category = MovieLists.find((el) => el.category === params.category);
 
@@ -48,8 +49,20 @@ export const MoviesCategoryPage = () => {
             </button>
           ))}
         </div>
-        {!category ? (
-          <h3>Unknown catgory</h3>
+        {isLoading && (
+          <>
+            <Title>{category?.label}</Title>
+            <GridWrapper>
+              {Array(20)
+                .fill(null)
+                .map((_, index) => (
+                  <MovieCartSkeleton key={index} size="large" />
+                ))}
+            </GridWrapper>
+          </>
+        )}
+        {!category && isLoading === false ? (
+          <h3>Unknown category</h3>
         ) : (
           <>
             <Title>{category?.label}</Title>
@@ -60,7 +73,9 @@ export const MoviesCategoryPage = () => {
             </GridWrapper>
           </>
         )}
-        {data?.total_pages && <Pagination currentPage={page} setCurrentPage={setPage} pagesCount={data?.total_pages} />}
+        {data?.total_pages && isLoading === false && (
+          <Pagination currentPage={page} setCurrentPage={setPage} pagesCount={data?.total_pages} />
+        )}
       </Container>
     </section>
   );

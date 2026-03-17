@@ -8,11 +8,12 @@ import { MovieCart } from '@/common/components/MovieCart/MovieCart';
 import styles from './SearchPage.module.scss';
 import { Title } from '@/common/components/Title/Title';
 import { Pagination } from '@/common/components/Pagination/Pagination';
+import { MovieCartSkeleton } from '@/common/components/MovieCartSkeleton/MovieCartSkeleton';
 
 export const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState<number>(1);
-  const [getSearchMovies, { data }] = useLazyGetSearchMoviesQuery();
+  const [getSearchMovies, { data, isLoading }] = useLazyGetSearchMoviesQuery();
 
   const searchResult = searchParams.get('query');
 
@@ -45,7 +46,19 @@ export const SearchPage = () => {
           {searchResult ? (
             <div>
               <p>Results for "{searchResult}"</p>
-              {movies}
+              {isLoading ? (
+                <>
+                  <GridWrapper>
+                    {Array(20)
+                      .fill(null)
+                      .map((_, index) => (
+                        <MovieCartSkeleton key={index} size="large" />
+                      ))}
+                  </GridWrapper>
+                </>
+              ) : (
+                movies
+              )}
             </div>
           ) : (
             <p className={styles.info}>Enter a movie title to start searching.</p>

@@ -3,18 +3,23 @@ import styles from './InfoBlock.module.scss';
 import { Title } from '@/common/components/Title/Title';
 import { formatRuntime } from '@/common/utils/formatTime';
 import { useNavigate } from 'react-router';
+import { InfoBlockSkeleton } from '@/common/components/InfoBlockSkeleton/InfoBlockSkeleton';
 
 type InfoBlockProps = {
   movieId: string;
 };
 export const InfoBlock = ({ movieId }: InfoBlockProps) => {
-  const { data: movie } = useGetOneMovieQuery(movieId);
+  const { data: movie, isLoading } = useGetOneMovieQuery(movieId);
 
   const navigate = useNavigate();
 
   const handleGoBack = () => {
     navigate(-1);
   };
+
+  if (isLoading) {
+    return <InfoBlockSkeleton />;
+  }
 
   return (
     <section className={styles.content}>

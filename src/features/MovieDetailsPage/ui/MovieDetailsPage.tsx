@@ -9,17 +9,17 @@ export const MovieDetailsPage = () => {
   const { movie_id } = useParams<{ movie_id: string }>();
   return (
     <>
-      <Container>
-        {movie_id !== undefined ? (
-          <div className={styles.contentAll}>
-            <InfoBlock movieId={movie_id} />
-            <CreditsBlock movieId={movie_id} />
-            <SimilarBlock movieId={movie_id} />
-          </div>
-        ) : (
+      {movie_id !== undefined ? (
+        <div className={styles.contentAll}>
+          <InfoBlock movieId={movie_id} />
+          <CreditsBlock movieId={movie_id} />
+          <SimilarBlock movieId={movie_id} />
+        </div>
+      ) : (
+        <Container>
           <p>Movie not found.</p>
-        )}
-      </Container>
+        </Container>
+      )}
     </>
   );
 };

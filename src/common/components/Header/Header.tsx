@@ -1,11 +1,14 @@
-import { toggleTheme } from '@/app/model/appSlice';
+import { selectStatus, toggleTheme } from '@/app/model/appSlice';
 import { useAppDispatch } from '@/common/hooks/useAppDispatch';
+import { useAppSelector } from '@/common/hooks/useAppSelector';
 import { Path } from '@/common/routing/Routing';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { Container } from '../Container/Container';
+import { LinearProgress } from '../LinearProgress/LinearProgress';
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
 
   const changeThemeHandler = () => dispatch(toggleTheme());
@@ -37,17 +40,28 @@ export const Header = () => {
             </Link>
           </div>
           <nav className={styles.navigation}>
-            <Link to={Path.Main}>Main</Link>
-            <Link to={'/movies/popular'}>Category Movies</Link>
-            <Link to={Path.FilteredMovies}>Filtered Movies</Link>
-            <Link to={Path.Search}>Search</Link>
-            <Link to={Path.Favorites}>Favorites</Link>
+            <NavLink to={Path.Main} className={({ isActive }) => (isActive ? styles.active : '')}>
+              Main
+            </NavLink>
+            <NavLink to={'/movies/popular'} className={({ isActive }) => (isActive ? styles.active : '')}>
+              Category Movies
+            </NavLink>
+            <NavLink to={Path.FilteredMovies} className={({ isActive }) => (isActive ? styles.active : '')}>
+              Filtered Movies
+            </NavLink>
+            <NavLink to={Path.Search} className={({ isActive }) => (isActive ? styles.active : '')}>
+              Search
+            </NavLink>
+            <NavLink to={Path.Favorites} className={({ isActive }) => (isActive ? styles.active : '')}>
+              Favorites
+            </NavLink>
           </nav>
           <div className={styles.themeMode}>
             <button onClick={changeThemeHandler} />
           </div>
         </div>
       </Container>
+      {status === 'loading' && <LinearProgress />}
     </header>
   );
 };

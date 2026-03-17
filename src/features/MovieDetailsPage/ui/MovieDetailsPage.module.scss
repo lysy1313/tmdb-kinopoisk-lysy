@@ -1,11 +1,14 @@
 @use '@/common/styles/variables.scss' as *;
 
 .contentAll {
+  max-width: 1330px;
+  width: 100%;
   background-color: $accentColor;
   border-radius: 20px;
-  padding: 5px 5px 30px;
+  padding: 5px 0 30px;
   margin: 40px auto;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   gap: 50px;
 }

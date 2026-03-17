@@ -1,0 +1,30 @@
+@use '@/common/styles/variables.scss' as *;
+
+.linearProgress {
+  width: 100%;
+  height: 4px;
+  background-color: $textMainColor;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  overflow: hidden;
+
+  & > span {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: $secondaryColor;
+    animation: progress 1.5s infinite linear;
+    border-radius: 2px;
+  }
+}
+
+@keyframes progress {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}

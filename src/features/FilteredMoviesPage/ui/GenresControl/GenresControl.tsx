@@ -3,9 +3,10 @@ import { useGetGenresListQuery } from '../../api/filteredMoviesApi';
 import styles from './GenresControl.module.scss';
 import { selectWithGenres, toggleGenres } from '../../model/filteredMoviesSlice';
 import { useAppDispatch } from '@/common/hooks/useAppDispatch';
+import { MySkeleton } from '@/common/components/Skeleton/Skeleton';
 
 export const GenresControl = () => {
-  const { data } = useGetGenresListQuery();
+  const { data, isLoading } = useGetGenresListQuery();
 
   const genres = useAppSelector(selectWithGenres);
 
@@ -14,6 +15,18 @@ export const GenresControl = () => {
   const toggleGenreHandler = (id: number) => {
     dispatch(toggleGenres(id));
   };
+
+  if (isLoading) {
+    return (
+      <div className={styles.genreContainer}>
+        {Array(19)
+          .fill(null)
+          .map((_, index) => (
+            <MySkeleton key={index} width={110} height={27} />
+          ))}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.genreContainer}>

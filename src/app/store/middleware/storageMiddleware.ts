@@ -10,15 +10,14 @@ export const storageMiddleware = createListenerMiddleware();
 const startAppListening = storageMiddleware.startListening.withTypes<RootState>();
 
 startAppListening({
-  matcher: isAnyOf(favoritesSlice.actions.toggleFavoritesMovie),
-  effect: (_, listenerApi) => {
-    saveState(FAVORITES_LS, listenerApi.getState().favorites.favoritesMovies);
-  },
-});
-
-startAppListening({
   matcher: isAnyOf(appSlice.actions.toggleTheme),
   effect: (_, listenerApi) => {
     saveState(THEME_MODE_LS, listenerApi.getState().app.themeMode);
+  },
+});
+startAppListening({
+  matcher: isAnyOf(favoritesSlice.actions.toggleFavoritesMovie),
+  effect: (_, listenerApi) => {
+    saveState(FAVORITES_LS, listenerApi.getState().favorites.favoritesMovies);
   },
 });

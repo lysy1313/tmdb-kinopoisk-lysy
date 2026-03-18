@@ -1,7 +1,7 @@
 @use '@/common/styles/variables.scss' as *;
 
 .notFound {
-  min-height: 80vh; // Центрируем контент по вертикали
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;

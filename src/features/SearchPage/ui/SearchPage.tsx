@@ -42,7 +42,12 @@ export const SearchPage = () => {
       <Container>
         <div className={styles.searchWrapper}>
           <Title>Search results</Title>
-          <Search key={searchResult || 'empty'} querySearch={searchResult} setSearchParams={setSearchParams} />
+          <Search
+            key={searchResult || 'empty'}
+            querySearch={searchResult}
+            setSearchParams={setSearchParams}
+            setPage={setPage}
+          />
           {searchResult ? (
             <div>
               <p>Results for "{searchResult}"</p>

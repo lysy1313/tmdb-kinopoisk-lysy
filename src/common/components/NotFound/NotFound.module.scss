@@ -1,7 +1,7 @@
 @use '@/common/styles/variables.scss' as *;
 
 .notFound {
-  min-height: 80vh; // Центрируем контент по вертикали
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +16,7 @@
 }
 
 .errorCode {
-  font-size: clamp(80px, 15vw, 150px); // Адаптивный размер шрифта
+  font-size: clamp(80px, 15vw, 150px);
   font-weight: 800;
   line-height: 1;
   background: linear-gradient(90deg, #90cea1, #3cbec9, #00b3e5);

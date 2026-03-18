@@ -21,7 +21,31 @@
 
 .cartWrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: self-start;
   gap: 20px;
+}
+
+.emptyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: $textColor;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 16px;
+  color: $secondaryTextColor;
+  max-width: 300px;
+  margin-bottom: 24px;
+  line-height: 1.5;
 }

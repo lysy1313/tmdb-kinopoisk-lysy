@@ -14,6 +14,23 @@ type MovieSectionProps<T> = {
 };
 
 export const ContentSection = <T,>({ category, title, items, renderItem, loading }: MovieSectionProps<T>) => {
+  if (loading === false && (!items || items.length === 0)) {
+    return (
+      <section>
+        <Container>
+          <div className={styles.titleSection}>
+            <Title>{title}</Title>
+          </div>
+
+          <div className={styles.emptyWrapper}>
+            <h3 className={styles.title}>No "{title}" available</h3>
+            <p className={styles.description}>Try searching for something else or check back later.</p>
+          </div>
+        </Container>
+      </section>
+    );
+  }
+
   return (
     <section>
       <Container>

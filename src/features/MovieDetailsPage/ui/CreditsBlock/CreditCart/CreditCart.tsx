@@ -7,7 +7,7 @@ type Props = {
 export const CreditCart = ({ credit }: Props) => {
   const profileUrl = credit.profile_path
     ? `https://image.tmdb.org/t/p/w185${credit.profile_path}`
-    : 'https://placehold.co/185/364f6b/ffffff?font=montserrat&text=No+Photo';
+    : 'https://placehold.co/500/555/01b4e4?text=No+poster';
 
   return (
     <div className={styles.card}>

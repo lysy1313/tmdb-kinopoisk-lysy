@@ -7,9 +7,10 @@ type SearchPropsType = {
   page?: 'main' | 'search';
   querySearch?: string | undefined | null;
   setSearchParams?: SetURLSearchParams;
+  setPage?: (page: number) => void;
 };
 
-export const Search = memo(({ page = 'search', querySearch, setSearchParams }: SearchPropsType) => {
+export const Search = memo(({ page = 'search', querySearch, setSearchParams, setPage }: SearchPropsType) => {
   const [searchText, setSearchText] = useState<string>(querySearch || '');
   const navigate = useNavigate();
 
@@ -28,7 +29,8 @@ export const Search = memo(({ page = 'search', querySearch, setSearchParams }: S
     if (page === 'main') {
       navigate(`${Path.Search}?query=${encodeURIComponent(trimmedText)}`);
     } else if (page === 'search') {
-      if (searchText && setSearchParams) {
+      if (searchText && setSearchParams && setPage) {
+        setPage(1);
         setSearchParams({ query: trimmedText });
       }
     }

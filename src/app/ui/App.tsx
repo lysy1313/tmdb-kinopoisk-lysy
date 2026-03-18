@@ -5,6 +5,7 @@ import styles from './App.module.scss';
 import { useAppSelector } from '@/common/hooks/useAppSelector';
 import { useEffect } from 'react';
 import { selectThemeMode } from '../model/appSlice';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const theme = useAppSelector(selectThemeMode);
@@ -20,6 +21,7 @@ function App() {
         <Routing />
       </main>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

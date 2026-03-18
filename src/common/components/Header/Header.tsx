@@ -2,7 +2,7 @@ import { selectStatus, toggleTheme } from '@/app/model/appSlice';
 import { useAppDispatch } from '@/common/hooks/useAppDispatch';
 import { useAppSelector } from '@/common/hooks/useAppSelector';
 import { Path } from '@/common/routing/Routing';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useLocation } from 'react-router';
 import { Container } from '../Container/Container';
 import { LinearProgress } from '../LinearProgress/LinearProgress';
 import styles from './Header.module.scss';
@@ -10,6 +10,7 @@ import styles from './Header.module.scss';
 export const Header = () => {
   const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const changeThemeHandler = () => dispatch(toggleTheme());
 
@@ -43,7 +44,10 @@ export const Header = () => {
             <NavLink to={Path.Main} className={({ isActive }) => (isActive ? styles.active : '')}>
               Main
             </NavLink>
-            <NavLink to={'/movies/popular'} className={({ isActive }) => (isActive ? styles.active : '')}>
+            <NavLink
+              to={'/movies/popular'}
+              className={() => (location.pathname.startsWith('/movies/') ? styles.active : '')}
+            >
               Category Movies
             </NavLink>
             <NavLink to={Path.FilteredMovies} className={({ isActive }) => (isActive ? styles.active : '')}>

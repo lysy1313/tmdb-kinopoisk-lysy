@@ -1,0 +1,40 @@
+@use './variables.scss' as *;
+
+%rating {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #38383877;
+  cursor: pointer;
+  outline: 1px solid greenyellow;
+  color: greenyellow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.red {
+    outline: 1px solid red;
+    color: red;
+  }
+  &.orange {
+    outline: 1px solid orange;
+    color: orange;
+  }
+}
+
+%button {
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+
+  background-color: $primaryColor;
+  color: $textColor;
+  border: 1px solid $secondaryColor;
+
+  transition: background-color 0.4s ease;
+
+  &:hover {
+    background-color: $secondaryColor;
+  }
+}

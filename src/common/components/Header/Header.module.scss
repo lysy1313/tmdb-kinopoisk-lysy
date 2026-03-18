@@ -1,0 +1,164 @@
+@use '@/common/styles/variables.scss' as *;
+
+.headerBorder {
+  border-bottom: 1px solid $secondaryColor;
+  background-color: $blackPrimaryColor;
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+  text-align: center;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+
+  a {
+    text-decoration: none;
+    color: $secondaryColor;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $secondaryColor;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+    }
+
+    &.active {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      color: $secondaryColor;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:global(.active) {
+      color: $secondaryColor;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.themeMode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    all: unset;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffdb1d;
+    box-shadow: 0 0 15px rgba(255, 219, 29, 0.6);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 100%;
+      height: 100%;
+      background-color: $blackPrimaryColor;
+      border-radius: 50%;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translate(100%, -100%) scale(0);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffdb1d;
+      transition: all 0.5s ease;
+      transform: translate(-50%, -50%) scale(0);
+      box-shadow:
+        0 -15px 0 #ffdb1d,
+        0 15px 0 #ffdb1d,
+        15px 0 0 #ffdb1d,
+        -15px 0 0 #ffdb1d,
+        11px -11px 0 #ffdb1d,
+        -11px 11px 0 #ffdb1d,
+        11px 11px 0 #ffdb1d,
+        -11px -11px 0 #ffdb1d;
+    }
+
+    &:hover {
+      transform: rotate(20deg) scale(1.1);
+    }
+  }
+}
+
+:global([data-theme='light']) {
+  .themeMode button {
+    background-color: #ffdb1d;
+
+    &::before {
+      transform: translate(100%, -100%) scale(0);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+:global([data-theme='dark']) {
+  .themeMode button {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(241, 241, 241, 0.3);
+    transform: rotate(-20deg);
+
+    &::before {
+      transform: translate(30%, -20%) scale(1);
+      background-color: $blackPrimaryColor;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) scale(0);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.moviesWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  justify-items: center;
+  gap: 20px;
+  margin: 40px auto;
+
+  &.miniMoviesWrapper {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,24 @@
+@use '@/common/styles/variables.scss' as *;
+
+.selectContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  h3 {
+    color: $textColor;
+    font-weight: 300;
+  }
+}
+
+.select {
+  flex: 1;
+  height: 30px;
+  border-radius: 20px;
+  background-color: $primaryColor;
+  color: $textColor;
+  border: 1px solid $secondaryColor;
+  cursor: pointer;
+}

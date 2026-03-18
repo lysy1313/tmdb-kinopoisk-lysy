@@ -1,0 +1,26 @@
+@use '@/common/styles/variables.scss' as *;
+@use '@/common/styles/placeholders.scss' as *;
+
+.genreContainer {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  button {
+    @extend %button;
+
+    transition:
+      background-color 0.4s ease,
+      opacity 0.4s ease;
+
+    &.active {
+      background-color: $secondaryColor;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

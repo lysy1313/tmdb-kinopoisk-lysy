@@ -1,0 +1,53 @@
+@use '@/common/styles/variables.scss' as *;
+@use '@/common/styles/placeholders.scss' as *;
+
+.contentAll {
+  max-width: 1330px;
+  width: 100%;
+  background-color: $accentColor;
+  border-radius: 20px;
+  padding: 5px 0 30px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 50px;
+}
+
+.errorWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+
+  .errorIcon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    filter: grayscale(1);
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-size: 32px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+  }
+
+  p {
+    max-width: 450px;
+    font-size: 18px;
+    color: var(--secondary-text-color);
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+
+  button {
+    @extend %button;
+    min-width: 160px;
+    padding: 12px 24px;
+    color: white;
+  }
+}

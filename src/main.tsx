@@ -1,5 +1,15 @@
-import { createRoot } from "react-dom/client";
-import App from "./app/App.tsx";
-import "./index.css";
+import { createRoot } from 'react-dom/client';
+import App from './app/ui/App.tsx';
 
-createRoot(document.getElementById("root")!).render(<App />);
+import '@/common/styles/global.scss';
+import { BrowserRouter } from 'react-router';
+import { Provider } from 'react-redux';
+import { store } from './app/store/store.ts';
+
+createRoot(document.getElementById('root')!).render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+);

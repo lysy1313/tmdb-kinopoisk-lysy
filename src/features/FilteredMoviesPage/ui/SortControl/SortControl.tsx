@@ -1,9 +1,10 @@
-import { MOVIE_SORT_OPTIONS, type MovieSortType } from '@/common/constants/constants';
+import { MOVIE_SORT_OPTIONS } from '@/common/constants/constants';
 import { useAppDispatch } from '@/common/hooks/useAppDispatch';
 import { useAppSelector } from '@/common/hooks/useAppSelector';
 import { type ChangeEvent } from 'react';
 import { selectSortBy, setSortBy } from '../../model/filteredMoviesSlice';
 import styles from './SortControl.module.scss';
+import type { MovieSortType } from '../../api/filteredMovies.types';
 
 export const SortControl = () => {
   const sortBy = useAppSelector(selectSortBy);

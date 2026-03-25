@@ -1,6 +1,6 @@
 @use '@/common/styles/variables.scss' as *;
 
-a {
+.headerLink {
   text-decoration: none;
   color: $secondaryColor;
   font-size: 18px;

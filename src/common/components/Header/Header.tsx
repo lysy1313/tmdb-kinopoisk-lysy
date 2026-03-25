@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { selectStatus, toggleTheme } from '@/app/model/appSlice';
 import { useAppDispatch } from '@/common/hooks/useAppDispatch';
 import { useAppSelector } from '@/common/hooks/useAppSelector';
@@ -6,13 +7,26 @@ import { Link, NavLink, useLocation } from 'react-router';
 import { Container } from '../Container/Container';
 import { LinearProgress } from '../LinearProgress/LinearProgress';
 import styles from './Header.module.scss';
+import { useState, useEffect } from 'react';
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
   const location = useLocation();
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const changeThemeHandler = () => dispatch(toggleTheme());
+
+  // Закрываем меню при смене маршрута
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Блокируем скролл при открытом меню
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
+  }, [isMenuOpen]);
 
   return (
     <header className={styles.headerBorder}>

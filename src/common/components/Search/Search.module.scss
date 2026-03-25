@@ -38,3 +38,12 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .search {
+    max-width: 400px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+  }
+}

@@ -7,3 +7,16 @@
 .main {
   flex-grow: 1;
 }
+
+.loading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--black-primary-color);
+  color: var(--text-main-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

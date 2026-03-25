@@ -33,12 +33,16 @@ export const handleError = (result: QueryReturnValue<unknown, FetchBaseQueryErro
         }
         break;
     }
-    toast(error, { type: 'error', position: 'top-center', theme: 'dark' });
+    toast(error, {
+      type: 'error',
+      position: 'bottom-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
   }
-
-  // if ((result.data as { resultCode: ResultCode }).resultCode === ResultCode.Error) {
-  //   const messages = (result.data as { messages: string[] }).messages;
-  //   error = messages.length ? messages[0] : error;
-  //   api.dispatch(setAppErrorAC({ error }));
-  // }
 };

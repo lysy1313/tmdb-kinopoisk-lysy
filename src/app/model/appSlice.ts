@@ -11,6 +11,7 @@ export const appSlice = createAppSlice({
   initialState: {
     themeMode: loadState(THEME_MODE_LS, 'dark') as ThemeMode,
     status: 'idle' as RequestStatus,
+    activeRequests: 0,
   },
   selectors: {
     selectThemeMode: (state) => state.themeMode,
@@ -26,12 +27,15 @@ export const appSlice = createAppSlice({
     builder
       .addMatcher(isPending, (state) => {
         state.status = 'loading';
+        state.activeRequests += 1;
       })
       .addMatcher(isFulfilled, (state) => {
         state.status = 'succeeded';
+        state.activeRequests -= 1;
       })
       .addMatcher(isRejected, (state) => {
         state.status = 'failed';
+        state.activeRequests -= 1;
       });
   },
 });

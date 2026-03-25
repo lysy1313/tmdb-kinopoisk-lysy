@@ -99,9 +99,33 @@
 .titleCart {
   width: 200px;
   margin-top: 10px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   & h3 {
     font-size: 18px;
     font-weight: 500;
+  }
+}
+
+@media (pointer: coarse) {
+  .btnFavorites {
+    transform: translate(-70px, 70px);
+    &.isFav {
+      transform: translate(0, 0);
+    }
+  }
+}
+
+@media screen and (max-width: 407px) {
+  .cart {
+    &.miniCart {
+      width: 240px;
+      height: 350px;
+      & + .titleCart {
+        width: 240px;
+      }
+    }
   }
 }

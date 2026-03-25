@@ -1,0 +1,7 @@
+@use '@/common/styles/variables.scss' as *;
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}

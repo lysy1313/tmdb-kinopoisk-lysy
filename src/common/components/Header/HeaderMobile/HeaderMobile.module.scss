@@ -1,0 +1,74 @@
+@use '@/common/styles/variables.scss' as *;
+@use '@/common/styles/placeholders.scss' as *;
+
+.mobileWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  z-index: 999;
+
+  pointer-events: none;
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+
+  &.overlayOpen {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    pointer-events: all;
+  }
+}
+
+.mobileContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background: $blackPrimaryColor;
+  border-left: 1px solid $secondaryColor;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 40px;
+  gap: 30px;
+
+  transform: translateX(140%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.containerOpen {
+    transform: translateX(0);
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.burger {
+  @extend %button;
+}
+
+.closeBtn {
+  @extend %button;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+.themeWrapper {
+  margin-top: auto;
+  padding-bottom: 20px;
+}

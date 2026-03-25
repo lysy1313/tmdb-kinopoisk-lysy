@@ -46,3 +46,13 @@
     font-size: 18px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .main {
+    min-height: 400px;
+    justify-content: center;
+  }
+  .heroTitle {
+    margin: 0;
+  }
+}

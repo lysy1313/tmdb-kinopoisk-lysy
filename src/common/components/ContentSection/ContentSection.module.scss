@@ -21,9 +21,17 @@
 
 .cartWrapper {
   display: flex;
-  justify-content: flex-start;
-  align-items: self-start;
   gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  & > div {
+    flex: 0 0 200px;
+  }
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
 }
 
 .emptyWrapper {

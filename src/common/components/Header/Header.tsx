@@ -1,32 +1,22 @@
-/* eslint-disable react-hooks/set-state-in-effect */
-import { selectStatus, toggleTheme } from '@/app/model/appSlice';
-import { useAppDispatch } from '@/common/hooks/useAppDispatch';
 import { useAppSelector } from '@/common/hooks/useAppSelector';
-import { Path } from '@/common/routing/Routing';
-import { Link, NavLink, useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import { Container } from '../Container/Container';
 import { LinearProgress } from '../LinearProgress/LinearProgress';
 import styles from './Header.module.scss';
-import { useState, useEffect } from 'react';
+import { HeaderDesktop } from './HeaderDesktop/HeaderDesktop';
+import { HeaderMobile } from './HeaderMobile/HeaderMobile';
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const status = useAppSelector(selectStatus);
-  const dispatch = useAppDispatch();
-  const location = useLocation();
+  const isLoading = useAppSelector((state) => state.app.activeRequests > 0);
+  const breakpoint = 900;
+  const [isMobile, setIsMobile] = useState(window.innerWidth);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const changeThemeHandler = () => dispatch(toggleTheme());
-
-  // Закрываем меню при смене маршрута
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location.pathname]);
-
-  // Блокируем скролл при открытом меню
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
-  }, [isMenuOpen]);
+    const handleResize = () => setIsMobile(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <header className={styles.headerBorder}>
@@ -54,32 +44,10 @@ export const Header = () => {
               </svg>
             </Link>
           </div>
-          <nav className={styles.navigation}>
-            <NavLink to={Path.Main} className={({ isActive }) => (isActive ? styles.active : '')}>
-              Main
-            </NavLink>
-            <NavLink
-              to={'/movies/popular'}
-              className={() => (location.pathname.startsWith('/movies/') ? styles.active : '')}
-            >
-              Category Movies
-            </NavLink>
-            <NavLink to={Path.FilteredMovies} className={({ isActive }) => (isActive ? styles.active : '')}>
-              Filtered Movies
-            </NavLink>
-            <NavLink to={Path.Search} className={({ isActive }) => (isActive ? styles.active : '')}>
-              Search
-            </NavLink>
-            <NavLink to={Path.Favorites} className={({ isActive }) => (isActive ? styles.active : '')}>
-              Favorites
-            </NavLink>
-          </nav>
-          <div className={styles.themeMode}>
-            <button onClick={changeThemeHandler} />
-          </div>
+          {isMobile < breakpoint ? <HeaderMobile /> : <HeaderDesktop />}
         </div>
       </Container>
-      {status === 'loading' && <LinearProgress />}
+      {isLoading && <LinearProgress />}
     </header>
   );
 };
